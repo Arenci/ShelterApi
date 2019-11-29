@@ -7,6 +7,7 @@ import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
 import javax.persistence.Query;
 
+import com.shelter.rest.entity.Employee;
 import com.shelter.rest.entity.Shelter;
 
 @Stateless
@@ -31,18 +32,21 @@ public class ShelterBean {
         return d;
     }
 	
-//	public boolean createShelter(Shelter shelter){
-//        em.persist(shelter);        
-//        return true;
-//    }
+	
+	
+	public boolean createShelter(Shelter shelter){
+        em.persist(shelter);        
+        return true;
+    }
 	
 	public void deleteShelterById(String shltr_id){
         Query q = em.createNamedQuery("Shelter.deleteShelterById");
         q.setParameter("shltr_id", Integer.parseInt(shltr_id));
         q.executeUpdate();     
     }
-	public void updateShelter(Shelter shelter){      
-		em.persist(shelter);      
-    }
+	
+//	public void updateShelter(Shelter shelter){      
+//		em.persist(shelter);      
+//    }
 	
 }

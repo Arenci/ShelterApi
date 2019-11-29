@@ -13,7 +13,13 @@ import java.util.List;
  * 
  */
 @Entity
-@NamedQuery(name="Dog.findAll", query="SELECT d FROM Dog d")
+@NamedQueries({@NamedQuery(name="Dog.findAll", query="SELECT d FROM Dog d")
+, 			   @NamedQuery(name="Dog.findByEmployee", query="SELECT d FROM Dog d ")
+
+
+
+})
+
 public class Dog implements Serializable {
 	private static final long serialVersionUID = 1L;
 

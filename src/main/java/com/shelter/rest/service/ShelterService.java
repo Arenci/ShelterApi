@@ -34,6 +34,8 @@ public class ShelterService {
     @Path("getShelters")
     @Produces(MediaType.APPLICATION_JSON)
     public List<Shelter> getShelterJSON() {
+		
+		System.out.println("hello");
         List<Shelter> results = shelterBean.getShelters();
         return results;
     }
@@ -48,11 +50,15 @@ public class ShelterService {
         return Response.status(200).entity(shelter).build();
     }
 	
-//	@POST
-//	@Path("createShelter")
-//	public void createShelter(Shelter shelter) {
-//		shelterBean.createShelter(shelter);
-//	}
+	@POST
+	@Path("createShelter")
+	@Consumes(MediaType.APPLICATION_JSON)
+	@Produces(MediaType.APPLICATION_JSON)
+	public Response createShelter(Shelter shelter) {
+		System.out.println("hola");
+		shelterBean.createShelter(shelter);
+		return Response.status(200).entity(shelter).build();
+	}
 	
 	
 	@DELETE

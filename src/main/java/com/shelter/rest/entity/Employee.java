@@ -13,7 +13,12 @@ import java.util.List;
  * 
  */
 @Entity
-@NamedQuery(name="Employee.findAll", query="SELECT e FROM Employee e")
+@NamedQueries({@NamedQuery(name="Employee.findAll", query="SELECT e FROM Employee e")
+, 			   @NamedQuery(name="Employee.findEmployeeByShelter", query ="SELECT e FROM Employee e WHERE e.shelter.id = :shltr_id")
+, 			   @NamedQuery(name="Employee.deleteEmployee", query="DELETE FROM Employee e WHERE e.id = :emp_id")
+//, 			   @NamedQuery(name="Employee.findAllDogs", query ="SELECT e FROM Employee e join e.dogs d where e.id =")
+
+})
 public class Employee implements Serializable {
 	private static final long serialVersionUID = 1L;
 
@@ -57,7 +62,7 @@ public class Employee implements Serializable {
 	public int getId() {
 		return this.id;
 	}
-
+	
 	public void setId(int id) {
 		this.id = id;
 	}

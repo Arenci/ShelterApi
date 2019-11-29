@@ -14,6 +14,7 @@ import java.util.List;
 ,			   @NamedQuery(name="Shelter.findShelterById", query="SELECT d FROM Shelter d where d.id = :shltr_id")
 ,			   @NamedQuery(name="Shelter.deleteShelterById", query ="DELETE FROM Shelter d WHERE d.id = :shltr_id")
 
+
 })
 
 
@@ -32,7 +33,7 @@ public class Shelter implements Serializable {
 	//bi-directional many-to-one association to Employee
 	@OneToMany(fetch= FetchType.EAGER, mappedBy="shelter")
 	private List<Employee> employees;
-
+	
 	public Shelter() {
 	}
 
@@ -47,7 +48,7 @@ public class Shelter implements Serializable {
 	public String getAddress() {
 		return this.address;
 	}
-
+	
 	public void setAddress(String address) {
 		this.address = address;
 	}
