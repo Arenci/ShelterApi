@@ -15,6 +15,7 @@ import java.util.List;
 ,			   @NamedQuery(name="Shelter.deleteShelterById", query ="DELETE FROM Shelter d WHERE d.id = :shltr_id")
 
 
+
 })
 
 

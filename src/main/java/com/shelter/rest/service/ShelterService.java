@@ -55,11 +55,18 @@ public class ShelterService {
 	@Consumes(MediaType.APPLICATION_JSON)
 	@Produces(MediaType.APPLICATION_JSON)
 	public Response createShelter(Shelter shelter) {
-		System.out.println("hola");
 		shelterBean.createShelter(shelter);
 		return Response.status(200).entity(shelter).build();
 	}
 	
+	@PUT
+	@Path("updateShelter")
+	@Consumes(MediaType.APPLICATION_JSON)
+	@Produces(MediaType.APPLICATION_JSON)
+	public Response updateShelter(Shelter shelter) {
+		shelterBean.updateShelter(shelter);
+		return Response.status(200).entity(shelter).build();
+	}
 	
 	@DELETE
 	@Path("deleteShelterById")
@@ -70,6 +77,7 @@ public class ShelterService {
 		shelterBean.deleteShelterById(id);
 	        return Response.status(200).entity(status).build();
     }
+	
 	
 //	@PUT
 //	@Path("updateShelter")
