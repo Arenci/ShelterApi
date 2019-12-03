@@ -35,6 +35,7 @@ public class ShelterBean {
 	
 	
 	public boolean createShelter(Shelter shelter){
+		System.out.println(shelter.getAddress());
         em.persist(shelter);        
         return true;
     }
@@ -46,6 +47,7 @@ public class ShelterBean {
     }
 	
 	public void updateShelter(Shelter shelter){      
+		System.out.println(shelter.getAddress());
 		Query q = em.createQuery("UPDATE Shelter d SET d.name = :shltr_name, d.address = :shltr_address, d.img = :shltr_img WHERE d.id = :shltr_id");
 		q.setParameter("shltr_id", shelter.getId());
 		q.setParameter("shltr_name", shelter.getName());

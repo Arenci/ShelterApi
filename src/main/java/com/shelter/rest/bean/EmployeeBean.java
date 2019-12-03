@@ -31,5 +31,12 @@ public class EmployeeBean {
         q.executeUpdate();     
    }
 	
+	public Employee getEmployeeById(String emp_id) {
+		Query q = em.createNamedQuery("Employee.findEmployeeById");
+        q.setParameter("emp_id", 	Integer.parseInt(emp_id));
+        Employee d = (Employee)q.getSingleResult();
+        return d;
+		
+	}
 	
 }

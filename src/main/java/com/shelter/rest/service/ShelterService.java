@@ -35,7 +35,7 @@ public class ShelterService {
     @Produces(MediaType.APPLICATION_JSON)
     public List<Shelter> getShelterJSON() {
 		
-		System.out.println("hello");
+		
         List<Shelter> results = shelterBean.getShelters();
         return results;
     }

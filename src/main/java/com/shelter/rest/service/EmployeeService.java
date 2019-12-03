@@ -33,6 +33,7 @@ public class EmployeeService {
     }
 	
 	
+	
 	@DELETE
     @Path("deleteEmployeeById")
     @Produces(MediaType.APPLICATION_JSON)
@@ -42,4 +43,13 @@ public class EmployeeService {
         employeeBean.deleteShelterById(emp_id);
         return Response.status(200).entity(status).build();
     }
+	
+	
+	@GET
+	@Path("getEmployeeById")
+	@Produces(MediaType.APPLICATION_JSON)
+	public Employee getEmployeeById(@QueryParam("id") String id) {
+		Employee e = employeeBean.getEmployeeById(id);
+		return e;		
+	}
 }

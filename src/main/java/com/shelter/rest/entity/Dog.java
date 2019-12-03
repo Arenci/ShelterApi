@@ -26,14 +26,14 @@ public class Dog implements Serializable {
 	@Id
 	private int id;
 
+	private String name;
+	
+	private String breed;
+	
 	private int age;
 
-	private String breed;
-
 	private String code;
-
-	private String name;
-
+	
 	//bi-directional many-to-one association to Appoint
 	@OneToMany(fetch= FetchType.EAGER, mappedBy="dog")
 	private List<Appoint> appoints;
