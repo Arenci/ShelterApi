@@ -53,8 +53,7 @@ public class ShelterBean {
 		q.setParameter("shltr_name", shelter.getName());
 		q.setParameter("shltr_address", shelter.getAddress());
 		q.setParameter("shltr_img", shelter.getImg());
-		q.executeUpdate();
-		
+		q.executeUpdate();		
     }
 	
 }

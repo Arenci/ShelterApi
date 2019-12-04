@@ -78,12 +78,4 @@ public class ShelterService {
 	        return Response.status(200).entity(status).build();
     }
 	
-	
-//	@PUT
-//	@Path("updateShelter")
-//	@Produces(MediaType.APPLICATION_JSON)
-//	public Response updateShelter(Shelter shelter) {
-//		shelterBean.updateShelter(shelter);
-//		return Response.status(200).entity(status).build();
-//	}
 }

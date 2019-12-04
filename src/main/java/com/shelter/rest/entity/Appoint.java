@@ -1,11 +1,14 @@
 package com.shelter.rest.entity;
 
 import java.io.Serializable;
+import java.time.LocalDateTime;
+
 import javax.persistence.*;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
 
-import java.util.Date;
+
+
 
 
 /**
@@ -19,9 +22,10 @@ public class Appoint implements Serializable {
 
 	@EmbeddedId
 	private AppointPK id;
-
-	@Temporal(TemporalType.TIMESTAMP)
-	private Date date;
+	
+	
+	
+	private LocalDateTime date;
 
 	//bi-directional many-to-one association to Appuser
 	@JsonIgnore()
@@ -46,11 +50,11 @@ public class Appoint implements Serializable {
 		this.id = id;
 	}
 
-	public Date getDate() {
+	public LocalDateTime getDate() {
 		return this.date;
 	}
 
-	public void setDate(Date date) {
+	public void setDate(LocalDateTime date) {
 		this.date = date;
 	}
 

@@ -15,6 +15,7 @@ import java.util.List;
 @Entity
 @NamedQueries({@NamedQuery(name="Dog.findAll", query="SELECT d FROM Dog d")
 , 			   @NamedQuery(name="Dog.findByEmployee", query="SELECT d FROM Dog d ")
+, 			   @NamedQuery(name="Dog.findById", query="SELECT d FROM Dog d where d.id = :dog_id")
 
 
 
@@ -34,6 +35,17 @@ public class Dog implements Serializable {
 
 	private String code;
 	
+	private String img;
+	
+	
+	public String getImg() {
+		return img;
+	}
+
+	public void setImg(String img) {
+		this.img = img;
+	}
+
 	//bi-directional many-to-one association to Appoint
 	@OneToMany(fetch= FetchType.EAGER, mappedBy="dog")
 	private List<Appoint> appoints;

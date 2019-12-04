@@ -33,7 +33,7 @@ public class EmployeeBean {
 	
 	public Employee getEmployeeById(String emp_id) {
 		Query q = em.createNamedQuery("Employee.findEmployeeById");
-        q.setParameter("emp_id", 	Integer.parseInt(emp_id));
+        q.setParameter("emp_id", Integer.parseInt(emp_id));
         Employee d = (Employee)q.getSingleResult();
         return d;
 		
