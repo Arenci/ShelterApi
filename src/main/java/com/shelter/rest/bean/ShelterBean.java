@@ -2,13 +2,17 @@ package com.shelter.rest.bean;
 
 import java.util.List;
 
+import javax.annotation.security.DeclareRoles;
+import javax.annotation.security.RolesAllowed;
 import javax.ejb.Stateless;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
 import javax.persistence.Query;
 
-import com.shelter.rest.entity.Employee;
+import org.jboss.ejb3.annotation.SecurityDomain;
+import org.jboss.ws.api.annotation.WebContext;
 import com.shelter.rest.entity.Shelter;
+
 
 @Stateless
 public class ShelterBean {
@@ -17,6 +21,7 @@ public class ShelterBean {
 	
 	@PersistenceContext(unitName="ShelterApi")
     EntityManager em;
+	
 	
 	@SuppressWarnings("unchecked")
 	public List<Shelter> getShelters(){

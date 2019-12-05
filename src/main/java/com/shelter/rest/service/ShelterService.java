@@ -2,6 +2,8 @@ package com.shelter.rest.service;
 
 import java.util.List;
 
+import javax.annotation.security.DeclareRoles;
+import javax.annotation.security.RolesAllowed;
 import javax.ejb.EJB;
 import javax.ws.rs.Consumes;
 import javax.ws.rs.DELETE;
@@ -14,9 +16,11 @@ import javax.ws.rs.QueryParam;
 import javax.ws.rs.core.MediaType;
 import javax.ws.rs.core.Response;
 
+import org.jboss.ejb3.annotation.SecurityDomain;
+import org.jboss.ws.api.annotation.WebContext;
+
 import com.shelter.rest.bean.ShelterBean;
 import com.shelter.rest.entity.Shelter;
-
 
 
 
@@ -33,9 +37,7 @@ public class ShelterService {
 	@GET
     @Path("getShelters")
     @Produces(MediaType.APPLICATION_JSON)
-    public List<Shelter> getShelterJSON() {
-		
-		
+    public List<Shelter> getShelterJSON() {				
         List<Shelter> results = shelterBean.getShelters();
         return results;
     }
@@ -50,6 +52,8 @@ public class ShelterService {
         return Response.status(200).entity(shelter).build();
     }
 	
+	
+	@RolesAllowed("Admin")
 	@POST
 	@Path("createShelter")
 	@Consumes(MediaType.APPLICATION_JSON)

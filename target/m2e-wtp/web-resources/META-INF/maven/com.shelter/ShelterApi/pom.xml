@@ -30,6 +30,13 @@
     <artifactId>jackson-annotations</artifactId>
     <version>2.10.1</version>
 </dependency>
+<!-- https://mvnrepository.com/artifact/org.jboss.ejb3/jboss-ejb3-ext-api -->
+<dependency>
+    <groupId>org.jboss.ejb3</groupId>
+    <artifactId>jboss-ejb3-ext-api</artifactId>
+    <version>2.3.0.Final</version>
+</dependency>
+
 
 <dependency>
     <groupId>org.jboss.resteasy</groupId>
@@ -37,6 +44,13 @@
     <version>3.1.4.Final</version>
     <scope>provided</scope>
 </dependency>
+<!-- https://mvnrepository.com/artifact/org.jboss.ws/jbossws-api -->
+<dependency>
+    <groupId>org.jboss.ws</groupId>
+    <artifactId>jbossws-api</artifactId>
+    <version>1.0.1.Final</version>
+</dependency>
+
    
    </dependencies>
 </project>
