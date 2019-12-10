@@ -4,6 +4,7 @@ import java.io.Serializable;
 import javax.persistence.*;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
 import java.util.List;
 
@@ -20,6 +21,7 @@ import java.util.List;
 , 			   @NamedQuery(name="Employee.findEmployeeById", query="SELECT e FROM Employee e where e.id = :emp_id")
 
 })
+
 public class Employee implements Serializable {
 	private static final long serialVersionUID = 1L;
 
@@ -56,7 +58,7 @@ public class Employee implements Serializable {
 	@ManyToOne
 	@JoinColumn(name="ShelterID")
 	private Shelter shelter;
-
+	
 	public Employee() {
 	}
 

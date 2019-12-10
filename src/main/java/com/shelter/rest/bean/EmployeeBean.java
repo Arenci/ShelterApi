@@ -7,6 +7,7 @@ import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
 import javax.persistence.Query;
 
+import com.shelter.rest.entity.Dog;
 import com.shelter.rest.entity.Employee;
 import com.shelter.rest.entity.Shelter;
 
@@ -26,17 +27,22 @@ public class EmployeeBean {
     }
 	
 	public void deleteShelterById(String emp_id){
-        Query q = em.createNamedQuery("Employee.deleteEmployeerById");
+        Query q = em.createNamedQuery("Employee.deleteEmployee");
         q.setParameter("emp_id", Integer.parseInt(emp_id));
         q.executeUpdate();     
    }
+	
 	
 	public Employee getEmployeeById(String emp_id) {
 		Query q = em.createNamedQuery("Employee.findEmployeeById");
         q.setParameter("emp_id", Integer.parseInt(emp_id));
         Employee d = (Employee)q.getSingleResult();
         return d;
-		
 	}
+	
+	public boolean createDog(Employee employee){		
+        em.persist(employee);        
+        return true;
+    }
 	
 }

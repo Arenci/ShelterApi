@@ -53,7 +53,7 @@ public class ShelterService {
     }
 	
 	
-	@RolesAllowed("Admin")
+	
 	@POST
 	@Path("createShelter")
 	@Consumes(MediaType.APPLICATION_JSON)

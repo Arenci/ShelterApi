@@ -16,6 +16,7 @@ import java.util.List;
 @NamedQueries({@NamedQuery(name="Dog.findAll", query="SELECT d FROM Dog d")
 , 			   @NamedQuery(name="Dog.findByEmployee", query="SELECT d FROM Dog d ")
 , 			   @NamedQuery(name="Dog.findById", query="SELECT d FROM Dog d where d.id = :dog_id")
+,			   @NamedQuery(name="Dog.deleteDogById", query="DELETE FROM Dog d WHERE d.id = :dog_id")
 
 
 

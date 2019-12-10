@@ -16,7 +16,13 @@ import com.fasterxml.jackson.annotation.JsonIgnore;
  * 
  */
 @Entity
-@NamedQuery(name="Appoint.findAll", query="SELECT a FROM Appoint a")
+@NamedQueries({
+				@NamedQuery(name="Appoint.findAll", query="SELECT a FROM Appoint a")
+,				@NamedQuery(name="Appoint.deleteById", query="DELETE FROM Dog d WHERE d.id = :appoint_id")
+,
+
+})
+
 public class Appoint implements Serializable {
 	private static final long serialVersionUID = 1L;
 
