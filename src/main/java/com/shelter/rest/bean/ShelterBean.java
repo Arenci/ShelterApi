@@ -2,15 +2,13 @@ package com.shelter.rest.bean;
 
 import java.util.List;
 
-import javax.annotation.security.DeclareRoles;
-import javax.annotation.security.RolesAllowed;
+
 import javax.ejb.Stateless;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
 import javax.persistence.Query;
 
-import org.jboss.ejb3.annotation.SecurityDomain;
-import org.jboss.ws.api.annotation.WebContext;
+
 import com.shelter.rest.entity.Shelter;
 
 
@@ -40,7 +38,6 @@ public class ShelterBean {
 	
 	
 	public boolean createShelter(Shelter shelter){
-		System.out.println(shelter.getAddress());
         em.persist(shelter);        
         return true;
     }

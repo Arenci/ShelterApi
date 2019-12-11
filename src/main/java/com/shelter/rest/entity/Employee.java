@@ -4,7 +4,7 @@ import java.io.Serializable;
 import javax.persistence.*;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
-import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+
 
 import java.util.List;
 
@@ -17,7 +17,6 @@ import java.util.List;
 @NamedQueries({@NamedQuery(name="Employee.findAll", query="SELECT e FROM Employee e")
 , 			   @NamedQuery(name="Employee.findEmployeeByShelter", query ="SELECT e FROM Employee e WHERE e.shelter.id = :shltr_id")
 , 			   @NamedQuery(name="Employee.deleteEmployee", query="DELETE FROM Employee e WHERE e.id = :emp_id")
-//, 			   @NamedQuery(name="Employee.findAllDogs", query ="SELECT e FROM Employee e join e.dogs d where e.id =")
 , 			   @NamedQuery(name="Employee.findEmployeeById", query="SELECT e FROM Employee e where e.id = :emp_id")
 
 })

@@ -5,6 +5,7 @@ import javax.ws.rs.Consumes;
 import javax.ws.rs.DELETE;
 import javax.ws.rs.GET;
 import javax.ws.rs.POST;
+import javax.ws.rs.PUT;
 import javax.ws.rs.Path;
 import javax.ws.rs.Produces;
 import javax.ws.rs.QueryParam;
@@ -13,6 +14,7 @@ import javax.ws.rs.core.Response;
 
 import com.shelter.rest.bean.DogBean;
 import com.shelter.rest.entity.Dog;
+import com.shelter.rest.entity.Employee;
 
 
 @Path("Dog")
@@ -49,6 +51,14 @@ public class DogService {
 	@Produces(MediaType.APPLICATION_JSON)
 	public Response createShelter(Dog dog) {
 		dogBean.createDog(dog);
+		return Response.status(200).entity(dog).build();
+	}
+	@PUT
+	@Path("updateDog")
+	@Consumes(MediaType.APPLICATION_JSON)
+	@Produces(MediaType.APPLICATION_JSON)
+	public Response updateShelter(Dog dog) {
+		dogBean.updateDog(dog);
 		return Response.status(200).entity(dog).build();
 	}
 }

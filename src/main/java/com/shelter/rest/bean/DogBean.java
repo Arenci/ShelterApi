@@ -33,4 +33,18 @@ public class DogBean {
         em.persist(dog);        
         return true;
     }
+	
+	public void updateDog(Dog dog) {
+		Query q = em.createQuery("UPDATE Dog d SET d.name = :dog_name, d.breed = :dog_breed,"
+				+ "d.age = :dog_age, d.code = :dog_code,"
+				+ "d.img = :dog_img WHERE d.id = :dog_id");
+		
+		q.setParameter("dog_name", dog.getName());
+		q.setParameter("dog_breed", dog.getBreed());
+		q.setParameter("dog_age", dog.getAge());
+		q.setParameter("dog_code", dog.getCode());
+		q.setParameter("dog_img", dog.getImg());
+		q.setParameter("dog_id", dog.getId());
+		q.executeUpdate();
+	}
 }

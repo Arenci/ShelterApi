@@ -5,7 +5,12 @@ import java.time.LocalDateTime;
 
 import javax.persistence.*;
 
+import com.fasterxml.jackson.annotation.JsonFormat;
 import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
+import com.fasterxml.jackson.databind.annotation.JsonSerialize;
+import com.fasterxml.jackson.datatype.jsr310.deser.LocalDateTimeDeserializer;
+import com.fasterxml.jackson.datatype.jsr310.ser.LocalDateTimeSerializer;
 
 
 
@@ -18,7 +23,7 @@ import com.fasterxml.jackson.annotation.JsonIgnore;
 @Entity
 @NamedQueries({
 				@NamedQuery(name="Appoint.findAll", query="SELECT a FROM Appoint a")
-,				@NamedQuery(name="Appoint.deleteById", query="DELETE FROM Dog d WHERE d.id = :appoint_id")
+,				@NamedQuery(name="Appoint.deleteById", query="DELETE FROM Appoint d WHERE d.dog.id = :dog_id and d.appuser.id = :appuser_id")
 ,
 
 })
@@ -30,19 +35,21 @@ public class Appoint implements Serializable {
 	private AppointPK id;
 	
 	
-	
+	@JsonDeserialize(using = LocalDateTimeDeserializer.class)
+	@JsonSerialize(using = LocalDateTimeSerializer.class)
+	@JsonFormat(pattern = "yyyy-MM-dd HH:mm:ss")
 	private LocalDateTime date;
 
 	//bi-directional many-to-one association to Appuser
 	@JsonIgnore()
 	@ManyToOne
-	@JoinColumn(name="UserID")
+	@JoinColumn(name="UserID",insertable = false, updatable = false)
 	private Appuser appuser;
 
 	//bi-directional many-to-one association to Dog
 	@JsonIgnore
 	@ManyToOne
-	@JoinColumn(name="DogID")
+	@JoinColumn(name="DogID",insertable = false, updatable = false)
 	private Dog dog;
 
 	public Appoint() {
@@ -59,7 +66,8 @@ public class Appoint implements Serializable {
 	public LocalDateTime getDate() {
 		return this.date;
 	}
-
+	
+	
 	public void setDate(LocalDateTime date) {
 		this.date = date;
 	}
@@ -79,5 +87,6 @@ public class Appoint implements Serializable {
 	public void setDog(Dog dog) {
 		this.dog = dog;
 	}
+	
 
 }

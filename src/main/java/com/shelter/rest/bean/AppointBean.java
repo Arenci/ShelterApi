@@ -8,7 +8,7 @@ import javax.persistence.PersistenceContext;
 import javax.persistence.Query;
 
 import com.shelter.rest.entity.Appoint;
-import com.shelter.rest.entity.Shelter;
+
 
 @Stateless
 public class AppointBean {
@@ -21,10 +21,21 @@ public class AppointBean {
         q.executeUpdate();    
 	}
 	
+	@SuppressWarnings("unchecked")
 	public List<Appoint> getAppoints(){
 		Query q = em.createNamedQuery("Appoint.findAll");
         List<Appoint> results = q.getResultList();
         return results;
 	}
 	
+	public void createAppoint(Appoint appoint) {
+		em.persist(appoint);
+	}
+	
+	public void updateAppoint(Appoint appoint) {
+		Query q = em.createQuery("UPDATE Appoint a SET a.date= :appoint_date where a.id = :appoint_id");
+		q.setParameter("appoint_date", appoint.getDate());
+		q.setParameter("appoint_id", appoint.getId());
+		q.executeUpdate();
+	}
 }
