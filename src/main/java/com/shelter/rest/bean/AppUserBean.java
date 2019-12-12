@@ -22,4 +22,8 @@ public class AppUserBean {
         Appuser d = (Appuser)q.getSingleResult();
         return d;
     }
+	
+	public void createUser(Appuser appuser) {
+		em.persist(appuser);
+	}
 }

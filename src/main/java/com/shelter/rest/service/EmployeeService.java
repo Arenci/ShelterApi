@@ -15,8 +15,9 @@ import javax.ws.rs.core.MediaType;
 import javax.ws.rs.core.Response;
 
 import com.shelter.rest.bean.EmployeeBean;
+import com.shelter.rest.bean.ShelterBean;
 import com.shelter.rest.entity.Employee;
-import com.shelter.rest.entity.Shelter;
+
 
 
 @Path("Employee")
@@ -25,6 +26,9 @@ public class EmployeeService {
 	
 	@EJB
 	EmployeeBean employeeBean;
+	
+	@EJB
+	ShelterBean shelterBean;
 	
 	private final String status = "{\"status\":\"ok\"}";
 	
@@ -61,10 +65,13 @@ public class EmployeeService {
 	@Path("createEmployee")
 	@Consumes(MediaType.APPLICATION_JSON)
 	@Produces(MediaType.APPLICATION_JSON)
-	public Response createEmployee(Employee employee) {
+	public Response createEmployee(Employee employee, @QueryParam("ShelterID") String id) {			
+		employee.setShelter(shelterBean.getShelterById(id));
 		employeeBean.createEmployee(employee);
 		return Response.status(200).entity(employee).build();
 	}
+	
+	
 	
 	@PUT
 	@Path("updateEmployee")

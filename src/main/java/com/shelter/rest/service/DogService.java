@@ -13,8 +13,10 @@ import javax.ws.rs.core.MediaType;
 import javax.ws.rs.core.Response;
 
 import com.shelter.rest.bean.DogBean;
+import com.shelter.rest.bean.EmployeeBean;
 import com.shelter.rest.entity.Dog;
 import com.shelter.rest.entity.Employee;
+
 
 
 @Path("Dog")
@@ -22,7 +24,13 @@ public class DogService {
 
 	@EJB
 	DogBean dogBean;
+	
+	@EJB
+	EmployeeBean employeeBean;
+	
 	private final String status = "{\"status\":\"ok\"}";
+	
+	
 	
 	@GET
 	@Path("getDogById")
@@ -49,7 +57,8 @@ public class DogService {
 	@Path("createDog")
 	@Consumes(MediaType.APPLICATION_JSON)
 	@Produces(MediaType.APPLICATION_JSON)
-	public Response createShelter(Dog dog) {
+	public Response createDog(Dog dog, @QueryParam("id") String id) {				
+		
 		dogBean.createDog(dog);
 		return Response.status(200).entity(dog).build();
 	}

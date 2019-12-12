@@ -21,12 +21,14 @@ public class AppointBean {
         q.executeUpdate();    
 	}
 	
+	
 	@SuppressWarnings("unchecked")
 	public List<Appoint> getAppoints(){
 		Query q = em.createNamedQuery("Appoint.findAll");
         List<Appoint> results = q.getResultList();
         return results;
 	}
+	
 	
 	public void createAppoint(Appoint appoint) {
 		em.persist(appoint);
@@ -38,4 +40,5 @@ public class AppointBean {
 		q.setParameter("appoint_id", appoint.getId());
 		q.executeUpdate();
 	}
+	
 }

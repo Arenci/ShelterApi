@@ -4,22 +4,19 @@ import java.io.Serializable;
 import javax.persistence.*;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
-
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
 import java.util.List;
-
 
 /**
  * The persistent class for the employee database table.
  * 
  */
 @Entity
-@NamedQueries({@NamedQuery(name="Employee.findAll", query="SELECT e FROM Employee e")
-, 			   @NamedQuery(name="Employee.findEmployeeByShelter", query ="SELECT e FROM Employee e WHERE e.shelter.id = :shltr_id")
-, 			   @NamedQuery(name="Employee.deleteEmployee", query="DELETE FROM Employee e WHERE e.id = :emp_id")
-, 			   @NamedQuery(name="Employee.findEmployeeById", query="SELECT e FROM Employee e where e.id = :emp_id")
-
-})
+@NamedQueries({ @NamedQuery(name = "Employee.findAll", query = "SELECT e FROM Employee e"),
+		@NamedQuery(name = "Employee.findEmployeeByShelter", query = "SELECT e FROM Employee e WHERE e.shelter.id = :shltr_id"),
+		@NamedQuery(name = "Employee.deleteEmployee", query = "DELETE FROM Employee e WHERE e.id = :emp_id"),
+		@NamedQuery(name = "Employee.findEmployeeById", query = "SELECT e FROM Employee e where e.id = :emp_id") })
 
 public class Employee implements Serializable {
 	private static final long serialVersionUID = 1L;
@@ -39,32 +36,24 @@ public class Employee implements Serializable {
 
 	private int telephone;
 
-	//bi-directional many-to-many association to Dog
-	@ManyToMany(fetch= FetchType.EAGER)
-	@JoinTable(
-		name="takes_care"
-		, joinColumns={
-			@JoinColumn(name="EmployeeID")
-			}
-		, inverseJoinColumns={
-			@JoinColumn(name="DogID")
-			}
-		)
+	@ManyToMany(fetch = FetchType.EAGER)
+	@JoinTable(name = "takes_care", joinColumns = { @JoinColumn(name = "EmployeeID") }, inverseJoinColumns = {
+			@JoinColumn(name = "DogID") })
 	private List<Dog> dogs;
 
-	//bi-directional many-to-one association to Shelter
 	@JsonIgnore
+	@JsonIgnoreProperties("Employees")
 	@ManyToOne
-	@JoinColumn(name="ShelterID")
+	@JoinColumn(name = "ShelterID")
 	private Shelter shelter;
-	
+
 	public Employee() {
 	}
 
 	public int getId() {
 		return this.id;
 	}
-	
+
 	public void setId(int id) {
 		this.id = id;
 	}
